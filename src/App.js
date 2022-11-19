@@ -9,19 +9,19 @@ import Error from './pages/Error'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home/>
+    element: <Home />
   },
   {
     path: '/login',
-    element: <Login/>
+    element: <Login />
   },
   {
     path: '/admin',
-    element: <Admin/>
+    element: <Admin />
   },
   {
     path: '*',
-    element: <Error/>
+    element: <Error />
   }
 ])
 

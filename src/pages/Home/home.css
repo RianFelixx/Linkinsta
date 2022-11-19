@@ -1,5 +1,4 @@
-
-.home-container{
+.home-container {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -8,19 +7,19 @@
     justify-content: center;
 }
 
-.home-container h1{
+.home-container h1 {
     margin-bottom: 14px;
     color: #FFF;
     font-size: 44px;
     padding-top: 94px;
 }
 
-.home-container span{
+.home-container span {
     color: #F1F1F1;
     margin-bottom: 18px;
 }
 
-.links{
+.links {
     display: flex;
     flex-direction: column;
     max-width: 600px;
@@ -28,7 +27,7 @@
     text-align: center;
 }
 
-.link-area{
+.link-area {
     background-color: #FFF;
     width: 100%;
     margin-bottom: 18px;
@@ -38,36 +37,36 @@
     transition: transform 0.4s;
 }
 
-.link-area:hover{
+.link-area:hover {
     transform: scale(1.04);
 }
 
-.link-text{
+.link-text {
     font-size: 18px;
     line-height: 150%;
     color: #000;
 }
 
-footer{
+footer {
     display: flex;
     justify-content: center;
     gap: 14px;
     margin: 18px 0;
 }
 
-@media screen and (max-width: 550px){
-    .home-container h1{
+@media screen and (max-width: 550px) {
+    .home-container h1 {
         font-size: 32px;
         text-align: center;
     }
 
-    .link-text{
+    .link-text {
         font-size: 16px;
     }
 }
 
-@media screen and (max-width: 360px){
-    .home-container h1{
+@media screen and (max-width: 360px) {
+    .home-container h1 {
         font-size: 24px;
         text-align: center;
     }
@@ -76,5 +75,3 @@ footer{
         font-size: 14px;
     }
 }
-
-
