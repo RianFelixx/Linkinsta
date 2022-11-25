@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Header } from '../../components/Header'
 import './admin.css'
 import { Logo } from '../../components/Logo'
@@ -22,6 +22,29 @@ export default function Admin() {
     const [urlInput, setUrlInput] = useState("");
     const [backgroundColorInput, setBackgroundColorInput] = useState("#f1f1f1");
     const [textColorInput, setTextColorInput] = useState("#121212");
+
+    const [links, setLinks] = useState([])
+
+    useEffect(() => {
+        const linksRef = collection(db, "links")
+        const queryRef = query(linksRef, orderBy("created", "asc"))
+
+        const unsub = onSnapshot(queryRef, (snapshot) => {
+            let lista = [];
+
+            snapshot.forEach((doc) => {
+                lista.push({
+                    id: doc.id,
+                    name: doc.data().name,
+                    url: doc.data().url,
+                    bg: doc.data().bg,
+                    color: doc.data().color
+                })
+            })
+            console.log(lista);
+        })
+        
+    }, [])
 
     async function handleRegister(e) {
         e.preventDefault();
