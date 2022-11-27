@@ -29,7 +29,7 @@ export default function Admin() {
         const linksRef = collection(db, "links")
         const queryRef = query(linksRef, orderBy("created", "asc"))
 
-        const unsub = onSnapshot(queryRef, (snapshot) => {
+        onSnapshot(queryRef, (snapshot) => {
             let lista = [];
 
             snapshot.forEach((doc) => {
@@ -41,9 +41,9 @@ export default function Admin() {
                     color: doc.data().color
                 })
             })
-            console.log(lista);
+            setLinks(lista);
         })
-        
+
     }, [])
 
     async function handleRegister(e) {
@@ -70,6 +70,11 @@ export default function Admin() {
                 console.log("Erro ao registrar: " + error)
                 toast.error("Erro ao salvar o Link")
             })
+    }
+
+    async function handleDeleteLink(id) {
+        const docRef = doc(db, "links", id)
+        await deleteDoc(docRef)
     }
 
     return (
@@ -131,17 +136,20 @@ export default function Admin() {
                 Meus Links
             </h2>
 
-            <article
-                className='list animate-pop'
-                style={{ backgroundColor: "#000", color: "#fff" }}
-            >
-                <p>Grupo no Telegram</p>
-                <div>
-                    <button className='btn-delete'>
-                        <FiTrash2 size={18} color="#fff" />
-                    </button>
-                </div>
-            </article>
+            {links.map((item, index) => (
+                <article
+                    key={index}
+                    className='list animate-pop'
+                    style={{ backgroundColor: item.bg, color: item.color }}
+                >
+                    <p>{item.name}</p>
+                    <div>
+                        <button className='btn-delete' onClick={() => handleDeleteLink(item.id)}>
+                            <FiTrash2 size={18} color="#fff" />
+                        </button>
+                    </div>
+                </article>
+            ))}
         </div>
     )
 }
